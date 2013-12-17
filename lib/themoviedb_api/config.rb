@@ -1,0 +1,7 @@
+require 'confiture'
+
+class ThemoviedbApi::Config
+  include Confiture::Configuration
+
+  confiture_allowed_keys(:api_key)
+end

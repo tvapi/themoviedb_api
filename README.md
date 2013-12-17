@@ -1,3 +1,8 @@
+[![Build Status](https://travis-ci.org/wafcio/themoviedb_api.png?branch=master)](https://travis-ci.org/wafcio/themoviedb_api)
+[![Dependency Status](https://gemnasium.com/wafcio/themoviedb_api.png)](https://gemnasium.com/wafcio/themoviedb_api)
+[![Code Climate](https://codeclimate.com/github/wafcio/themoviedb_api.png)](https://codeclimate.com/github/wafcio/themoviedb_api)
+[![Coverage Status](https://coveralls.io/repos/wafcio/themoviedb_api/badge.png)](https://coveralls.io/r/wafcio/themoviedb_api)
+
 # ThemoviedbApi
 
 TODO: Write a gem description

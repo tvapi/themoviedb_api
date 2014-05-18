@@ -6,8 +6,7 @@ describe ThemoviedbApi::Configuration do
   describe 'real request' do
     describe '.find' do
       it 'should return response class' do
-        puts model.find.inspect
-        #model.settings.class.should == HTTParty::Response
+        model.find.class.should == ThemoviedbApi::Response
       end
     end
   end

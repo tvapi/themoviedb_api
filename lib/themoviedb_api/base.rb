@@ -1,33 +1,40 @@
-require 'httparty'
+require 'faraday'
 require 'uri_template'
 
 class ThemoviedbApi::Base
-  include HTTParty
-  base_uri 'https://api.themoviedb.org/3//'
-
   def initialize(client)
     @client = client
     @params = {}
   end
 
+  def connection
+    @connection ||= Faraday.new(url: base_url) do |builder|
+      builder.adapter ThemoviedbApi::Config.adapter
+    end
+  end
+
   def get(uri)
     @uri_template = URITemplate.new(uri)
-
     self
   end
 
   def params(options)
     @params = options
-
     self
   end
 
-  def response
-    @uri_template ? self.class.get(uri, body: @params) : nil
+  def response(klass = ThemoviedbApi::Response)
+    assert_uri_template
+    klass.new(connection.get(uri, @params))
   end
 
   def prepare_uri
-    @uri_template ? @uri_template.expand(@params.merge(api_key: @client.api_key)) : nil
+    assert_uri_template
+    @uri_template.expand(@params.merge(api_key: api_key))
+  end
+
+  def url
+    "#{base_url}#{uri}"
   end
 
   def uri
@@ -43,5 +50,15 @@ class ThemoviedbApi::Base
 
   def api_key
     @client.api_key
+  end
+
+  private
+
+  def assert_uri_template
+    raise "Path doesn't exists, use get(path) to setup path for request" unless @uri_template
+  end
+
+  def base_url
+    'https://api.themoviedb.org/3/'
   end
 end

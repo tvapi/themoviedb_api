@@ -25,7 +25,15 @@ class ThemoviedbApi::Client
     @company ||= ThemoviedbApi::Company.new(self)
   end
 
+  def credit
+    @creadit ||= ThemoviedbApi::Credit.new(self)
+  end
+
   def configuration
     @configuration ||= ThemoviedbApi::Configuration.new(self)
+  end
+
+  def discover
+    @discover ||= ThemoviedbApi::Discover.new(self)
   end
 end

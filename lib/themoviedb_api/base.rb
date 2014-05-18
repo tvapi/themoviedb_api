@@ -13,8 +13,19 @@ class ThemoviedbApi::Base
     end
   end
 
-  def get(uri)
+  def store_uri(uri)
     @uri_template = URITemplate.new(uri)
+  end
+
+  def get(uri)
+    store_uri(uri)
+    @method = :get
+    self
+  end
+
+  def post(uri)
+    store_uri(uri)
+    @method = :post
     self
   end
 
@@ -25,7 +36,7 @@ class ThemoviedbApi::Base
 
   def response(klass = ThemoviedbApi::Response)
     assert_uri_template
-    klass.new(connection.get(uri, @params))
+    klass.new(connection.send(@method, uri, @params))
   end
 
   def prepare_uri

@@ -40,4 +40,8 @@ class ThemoviedbApi::Client
   def find
     @find ||= ThemoviedbApi::Find.new(self)
   end
+
+  def genre
+    @genre ||= ThemoviedbApi::Genre.new(self)
+  end
 end

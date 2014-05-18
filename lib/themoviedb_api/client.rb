@@ -52,4 +52,8 @@ class ThemoviedbApi::Client
   def job
     @job ||= ThemoviedbApi::Job.new(self)
   end
+
+  def keyword
+    @keyword ||= ThemoviedbApi::Keyword.new(self)
+  end
 end

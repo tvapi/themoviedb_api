@@ -36,4 +36,8 @@ class ThemoviedbApi::Client
   def discover
     @discover ||= ThemoviedbApi::Discover.new(self)
   end
+
+  def find
+    @find ||= ThemoviedbApi::Find.new(self)
+  end
 end

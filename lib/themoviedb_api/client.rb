@@ -44,4 +44,8 @@ class ThemoviedbApi::Client
   def genre
     @genre ||= ThemoviedbApi::Genre.new(self)
   end
+
+  def guest_session
+    @guest_session ||= ThemoviedbApi::GuestSession.new(self)
+  end
 end

@@ -21,6 +21,10 @@ class ThemoviedbApi::Client
     @collection ||= ThemoviedbApi::Collection.new(self)
   end
 
+  def company
+    @company ||= ThemoviedbApi::Company.new(self)
+  end
+
   def configuration
     @configuration ||= ThemoviedbApi::Configuration.new(self)
   end

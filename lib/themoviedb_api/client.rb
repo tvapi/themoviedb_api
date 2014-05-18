@@ -48,4 +48,8 @@ class ThemoviedbApi::Client
   def guest_session
     @guest_session ||= ThemoviedbApi::GuestSession.new(self)
   end
+
+  def job
+    @job ||= ThemoviedbApi::Job.new(self)
+  end
 end

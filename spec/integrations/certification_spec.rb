@@ -5,7 +5,7 @@ describe ThemoviedbApi::Certification do
 
   describe 'real request' do
     describe '.movie_list' do
-      it 'should return response class' do
+      xit 'should return response class' do
         model.movie_list.class.should == ThemoviedbApi::Response
       end
     end

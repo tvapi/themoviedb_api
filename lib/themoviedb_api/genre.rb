@@ -1,9 +1,11 @@
 class ThemoviedbApi::Genre < ThemoviedbApi::Base
-  def list(options = {})
-    get("genre/list").params(options.merge(api_key: api_key)).response
+  # Get Movie List
+  def movies(options = {})
+    get("genre/movies/list").params(options.merge(api_key: api_key)).response
   end
 
-  def movies(id, options = {})
-    get("genre/#{id}/movies").params(options.merge(api_key: api_key)).response
+  # Get TV List
+  def tvs(options = {})
+    get("genre/tv/list").params(options.merge(api_key: api_key)).response
   end
 end

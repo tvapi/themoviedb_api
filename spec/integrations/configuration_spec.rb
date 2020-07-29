@@ -5,7 +5,7 @@ describe ThemoviedbApi::Configuration do
 
   describe 'real request' do
     describe '.find' do
-      it 'should return response class' do
+      xit 'should return response class' do
         model.find.class.should == ThemoviedbApi::Response
       end
     end

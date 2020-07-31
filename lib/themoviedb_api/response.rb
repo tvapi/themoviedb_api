@@ -1,25 +1,21 @@
-class ThemoviedbApi::Response
-  def initialize(faraday_response)
-    @faraday_response = faraday_response
-  end
+class ThemoviedbApi
+  class Response
+    attr_reader :status, :headers, :body, :data
 
-  def env
-    @faraday_response.env
-  end
+    def initialize(status:, headers:, body:)
+      @status = status
+      @headers = headers
+      @body = body
 
-  def status
-    @faraday_response.status
-  end
+      parse_body
+    end
 
-  def headers
-    @faraday_response.headers
-  end
+    private
 
-  def body
-    @body ||= @faraday_response.body
-  end
-
-  def inspect
-    body.inspect
+    def parse_body
+      @data = JSON.parse(body)
+    rescue
+      nil
+    end
   end
 end
